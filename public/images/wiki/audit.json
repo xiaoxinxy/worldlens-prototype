@@ -1,0 +1,124 @@
+{
+  "dynamic": {
+    "pacific": {
+      "title": "Pacific Plate",
+      "entityId": "Q205411",
+      "error": "Discarded a mismatched Commons result for Rivera Plate; current cover uses a local Mariana Trench image that represents Pacific Plate subduction.",
+      "images": []
+    },
+    "eurasian": {
+      "title": "Eurasian Plate",
+      "entityId": "Q188521",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/eurasian-1.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/EurasianPlate.png?width=640",
+          "sourceTitle": "File:EurasianPlate.png"
+        }
+      ]
+    },
+    "indo-australian": {
+      "title": "Indo-Australian Plate",
+      "entityId": "",
+      "error": "",
+      "images": []
+    },
+    "african": {
+      "title": "African Plate",
+      "entityId": "",
+      "error": "",
+      "images": []
+    },
+    "north-american": {
+      "title": "North American Plate",
+      "entityId": "",
+      "error": "",
+      "images": []
+    },
+    "south-american": {
+      "title": "South American Plate",
+      "entityId": "",
+      "error": "",
+      "images": []
+    },
+    "antarctic": {
+      "title": "Antarctic Plate",
+      "entityId": "",
+      "error": "",
+      "images": []
+    },
+    "fuji": {
+      "title": "Mount Fuji",
+      "entityId": "Q39231",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/fuji-1.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mt.%20Fuji%20banner.jpg?width=640",
+          "sourceTitle": "File:Mt. Fuji banner.jpg"
+        }
+      ]
+    },
+    "kilimanjaro": {
+      "title": "Mount Kilimanjaro",
+      "entityId": "Q7296",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/kilimanjaro-1.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kilimanjaro%20banner.jpg?width=640",
+          "sourceTitle": "File:Kilimanjaro banner.jpg"
+        }
+      ]
+    },
+    "etna": {
+      "title": "Mount Etna",
+      "entityId": "Q16990",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/etna-1.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banner%20Etna%20009%203324.jpg?width=640",
+          "sourceTitle": "File:Banner Etna 009 3324.jpg"
+        }
+      ]
+    },
+    "mauna-loa": {
+      "title": "Mauna Loa",
+      "entityId": "Q159762",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/mauna-loa-1.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mauna%20Loa.jpg?width=640",
+          "sourceTitle": "File:Mauna Loa.jpg"
+        }
+      ]
+    },
+    "yellowstone": {
+      "title": "Yellowstone Caldera",
+      "entityId": "",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/yellowstone-1.jpg",
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Yellowstone_National_Park_%28WY%2C_USA%29%2C_Grand_Prismatic_Spring_--_2022_--_2514.jpg/960px-Yellowstone_National_Park_%28WY%2C_USA%29%2C_Grand_Prismatic_Spring_--_2022_--_2514.jpg",
+          "sourceTitle": "File:Yellowstone National Park (WY, USA), Grand Prismatic Spring -- 2022 -- 2514.jpg"
+        }
+      ]
+    },
+    "toba": {
+      "title": "Lake Toba",
+      "entityId": "",
+      "error": "",
+      "images": [
+        {
+          "localPath": "/images/wiki/dynamic/toba-1.jpg",
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lake_Toba_from_Simalem%2C_North_Sumatra.jpg/960px-Lake_Toba_from_Simalem%2C_North_Sumatra.jpg",
+          "sourceTitle": "File:Lake Toba from Simalem, North Sumatra.jpg"
+        }
+      ]
+    }
+  }
+}

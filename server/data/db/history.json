@@ -1,0 +1,402 @@
+[
+  {
+    "id": "country-niu",
+    "slug": "country-niu",
+    "name": "纽埃",
+    "type": "国家",
+    "continent": "大洋洲",
+    "lat": -19.0333,
+    "lng": -169.8667,
+    "viewedAt": "2026-05-31T16:31:34.474Z"
+  },
+  {
+    "id": "country-cok",
+    "slug": "country-cok",
+    "name": "库克群岛",
+    "type": "国家",
+    "continent": "大洋洲",
+    "lat": -21.2333,
+    "lng": -159.7667,
+    "viewedAt": "2026-05-31T16:31:29.864Z"
+  },
+  {
+    "id": "country-tkl",
+    "slug": "country-tkl",
+    "name": "Tokelau",
+    "type": "国家",
+    "continent": "大洋洲",
+    "lat": -9,
+    "lng": -172,
+    "viewedAt": "2026-05-31T16:31:26.332Z"
+  },
+  {
+    "id": "pacific-ocean",
+    "slug": "pacific-ocean",
+    "name": "太平洋",
+    "type": "大洋",
+    "continent": "全球海域",
+    "lat": -13.0638,
+    "lng": -92.5751,
+    "viewedAt": "2026-05-31T16:19:58.300Z"
+  },
+  {
+    "id": "geo-VEN",
+    "slug": "",
+    "name": "委内瑞拉",
+    "type": "国家",
+    "continent": "south-america",
+    "lat": 6.7552,
+    "lng": -60.9366,
+    "viewedAt": "2026-05-31T16:19:00.195Z"
+  },
+  {
+    "id": "country-col",
+    "slug": "country-col",
+    "name": "哥伦比亚",
+    "type": "国家",
+    "continent": "南美洲",
+    "lat": 5.2401,
+    "lng": -70.7415,
+    "viewedAt": "2026-05-31T16:18:49.180Z"
+  },
+  {
+    "id": "china",
+    "slug": "china",
+    "name": "中国",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 35.8617,
+    "lng": 104.1954,
+    "viewedAt": "2026-05-31T14:48:11.770Z"
+  },
+  {
+    "id": "country-idn",
+    "slug": "country-idn",
+    "name": "印度尼西亚",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 0.0229,
+    "lng": 115.3601,
+    "viewedAt": "2026-05-31T14:33:20.314Z"
+  },
+  {
+    "id": "country-cog",
+    "slug": "country-cog",
+    "name": "刚果共和国",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -2.8764,
+    "lng": 15.5394,
+    "viewedAt": "2026-05-31T13:41:30.487Z"
+  },
+  {
+    "id": "country-gab",
+    "slug": "country-gab",
+    "name": "加蓬",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -0.9773,
+    "lng": 12.2875,
+    "viewedAt": "2026-05-31T13:41:29.954Z"
+  },
+  {
+    "id": "country-ago",
+    "slug": "country-ago",
+    "name": "安哥拉",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -16.0238,
+    "lng": 16.8919,
+    "viewedAt": "2026-05-31T13:41:28.854Z"
+  },
+  {
+    "id": "country-nam",
+    "slug": "country-nam",
+    "name": "纳米比亚",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -25.7721,
+    "lng": 16.5528,
+    "viewedAt": "2026-05-31T13:41:27.790Z"
+  },
+  {
+    "id": "south-africa",
+    "slug": "south-africa",
+    "name": "南非",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -28.3103,
+    "lng": 26.2342,
+    "viewedAt": "2026-05-31T13:41:27.318Z"
+  },
+  {
+    "id": "indian-ocean",
+    "slug": "indian-ocean",
+    "name": "印度洋",
+    "type": "大洋",
+    "continent": "全球海域",
+    "lat": -26.9092,
+    "lng": 34.9466,
+    "viewedAt": "2026-05-31T13:41:25.971Z"
+  },
+  {
+    "id": "country-lso",
+    "slug": "country-lso",
+    "name": "莱索托",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -29.8751,
+    "lng": 27.2604,
+    "viewedAt": "2026-05-31T13:41:23.212Z"
+  },
+  {
+    "id": "country-bwa",
+    "slug": "country-bwa",
+    "name": "博茨瓦纳",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": -26.5969,
+    "lng": 20.9358,
+    "viewedAt": "2026-05-31T13:41:21.662Z"
+  },
+  {
+    "id": "country-ata",
+    "slug": "country-ata",
+    "name": "南极洲",
+    "type": "国家",
+    "continent": "南极洲",
+    "lat": -85.3612,
+    "lng": 141.7872,
+    "viewedAt": "2026-05-31T13:41:18.039Z"
+  },
+  {
+    "id": "australia",
+    "slug": "australia",
+    "name": "澳大利亚",
+    "type": "国家",
+    "continent": "大洋洲",
+    "lat": -18.6989,
+    "lng": 129.6148,
+    "viewedAt": "2026-05-31T13:41:14.375Z"
+  },
+  {
+    "id": "country-png",
+    "slug": "country-png",
+    "name": "巴布亚新几内亚",
+    "type": "国家",
+    "continent": "大洋洲",
+    "lat": -6.0594,
+    "lng": 145.3596,
+    "viewedAt": "2026-05-31T13:41:11.030Z"
+  },
+  {
+    "id": "country-phl",
+    "slug": "country-phl",
+    "name": "菲律宾",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 8.5567,
+    "lng": 125.0765,
+    "viewedAt": "2026-05-31T13:41:04.921Z"
+  },
+  {
+    "id": "south-china-sea",
+    "slug": "south-china-sea",
+    "name": "南海",
+    "type": "海域",
+    "continent": "亚洲",
+    "lat": -0.0362,
+    "lng": 106.5127,
+    "viewedAt": "2026-05-31T13:41:00.377Z"
+  },
+  {
+    "id": "country-mys",
+    "slug": "country-mys",
+    "name": "马来西亚",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 5.5245,
+    "lng": 102.134,
+    "viewedAt": "2026-05-31T13:40:57.907Z"
+  },
+  {
+    "id": "country-mmr",
+    "slug": "country-mmr",
+    "name": "缅甸",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 17.421,
+    "lng": 95.5388,
+    "viewedAt": "2026-05-31T13:40:55.799Z"
+  },
+  {
+    "id": "country-tha",
+    "slug": "country-tha",
+    "name": "泰国",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 16.7766,
+    "lng": 99.1947,
+    "viewedAt": "2026-05-31T13:40:53.771Z"
+  },
+  {
+    "id": "india",
+    "slug": "india",
+    "name": "印度",
+    "type": "国家",
+    "continent": "亚洲",
+    "lat": 15.2455,
+    "lng": 78.4132,
+    "viewedAt": "2026-05-31T13:40:48.561Z"
+  },
+  {
+    "id": "country-rus",
+    "slug": "country-rus",
+    "name": "俄罗斯",
+    "type": "国家",
+    "continent": "欧洲",
+    "lat": 54.0891,
+    "lng": 133.4562,
+    "viewedAt": "2026-05-31T13:40:44.477Z"
+  },
+  {
+    "id": "usa",
+    "slug": "united-states",
+    "name": "美国",
+    "type": "国家",
+    "continent": "北美洲",
+    "lat": 37.7781,
+    "lng": -101.947,
+    "viewedAt": "2026-05-31T13:40:35.965Z"
+  },
+  {
+    "id": "country-can",
+    "slug": "country-can",
+    "name": "加拿大",
+    "type": "国家",
+    "continent": "北美洲",
+    "lat": 53.8368,
+    "lng": -66.0651,
+    "viewedAt": "2026-05-31T13:40:34.626Z"
+  },
+  {
+    "id": "country-grl",
+    "slug": "country-grl",
+    "name": "格陵兰",
+    "type": "国家",
+    "continent": "北美洲",
+    "lat": 71.3114,
+    "lng": -42.5373,
+    "viewedAt": "2026-05-31T13:40:33.500Z"
+  },
+  {
+    "id": "arctic-ocean",
+    "slug": "arctic-region",
+    "name": "北极地区",
+    "type": "大洋",
+    "continent": "极地",
+    "lat": 79.4112,
+    "lng": -160.726,
+    "viewedAt": "2026-05-31T13:40:21.929Z"
+  },
+  {
+    "id": "country-mex",
+    "slug": "country-mex",
+    "name": "墨西哥",
+    "type": "国家",
+    "continent": "北美洲",
+    "lat": 21.0398,
+    "lng": -90.2157,
+    "viewedAt": "2026-05-31T13:40:17.111Z"
+  },
+  {
+    "id": "country-ben",
+    "slug": "country-ben",
+    "name": "贝宁",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": 8.0414,
+    "lng": 1.8795,
+    "viewedAt": "2026-05-31T13:36:10.020Z"
+  },
+  {
+    "id": "country-lby",
+    "slug": "country-lby",
+    "name": "利比亚",
+    "type": "国家",
+    "continent": "非洲",
+    "lat": 22.3676,
+    "lng": 21.2053,
+    "viewedAt": "2026-05-31T13:36:08.996Z"
+  },
+  {
+    "id": "atlantic-ocean",
+    "slug": "atlantic-ocean",
+    "name": "大西洋",
+    "type": "大洋",
+    "continent": "全球海域",
+    "lat": -7.3938,
+    "lng": -11.116,
+    "viewedAt": "2026-05-31T13:36:07.057Z"
+  },
+  {
+    "id": "brazil",
+    "slug": "brazil",
+    "name": "巴西",
+    "type": "国家",
+    "continent": "南美洲",
+    "lat": 1.5974,
+    "lng": -69.5258,
+    "viewedAt": "2026-05-31T13:36:05.598Z"
+  },
+  {
+    "id": "country-ecu",
+    "slug": "country-ecu",
+    "name": "厄瓜多尔",
+    "type": "国家",
+    "continent": "南美洲",
+    "lat": -1.8889,
+    "lng": -78.719,
+    "viewedAt": "2026-05-31T13:36:01.915Z"
+  },
+  {
+    "id": "country-per",
+    "slug": "country-per",
+    "name": "秘鲁",
+    "type": "国家",
+    "continent": "南美洲",
+    "lat": -4.8984,
+    "lng": -76.5794,
+    "viewedAt": "2026-05-31T13:36:01.147Z"
+  },
+  {
+    "id": "country-ven",
+    "slug": "country-ven",
+    "name": "委内瑞拉",
+    "type": "国家",
+    "continent": "南美洲",
+    "lat": 8.2701,
+    "lng": -68.7208,
+    "viewedAt": "2026-05-31T13:35:59.913Z"
+  },
+  {
+    "id": "caribbean-sea",
+    "slug": "caribbean-sea",
+    "name": "加勒比海",
+    "type": "海域",
+    "continent": "北美洲",
+    "lat": 14.0314,
+    "lng": -64.4801,
+    "viewedAt": "2026-05-31T13:35:58.632Z"
+  },
+  {
+    "id": "country-guy",
+    "slug": "country-guy",
+    "name": "圭亚那",
+    "type": "国家",
+    "continent": "南美洲",
+    "lat": 7.438,
+    "lng": -60.1292,
+    "viewedAt": "2026-05-31T13:35:57.933Z"
+  }
+]
