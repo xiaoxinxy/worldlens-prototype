@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "backend:dev": "mvn -f backend/pom.xml spring-boot:run",
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "node --test scripts/*.test.mjs",
+    "test:backend": "mvn -f backend/pom.xml test",
     "build": "vite build",
+    "check": "npm test && npm run build",
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^6.0.7",
-    "pinia": "latest",
-    "three": "latest",
-    "vite": "latest",
-    "vue": "latest",
-    "vue-router": "latest"
+    "pinia": "^3.0.4",
+    "three": "^0.184.0",
+    "vite": "^8.1.0",
+    "vue": "^3.5.38",
+    "vue-router": "^5.1.0"
   }
 }

@@ -86,6 +86,41 @@ describe('WorldLens 2.0 data foundations', () => {
     await assertUniqueImageContent(climateZones, 'climate cover')
   })
 
+  it('models climate exploration as latitude bands plus typical cases', () => {
+    const requiredTypes = new Set(['tropical_rainforest', 'tropical_monsoon', 'temperate_monsoon', 'hot_desert', 'mediterranean', 'oceanic', 'continental', 'subarctic', 'polar', 'highland'])
+    const availableTypes = new Set(climateZones.map((zone) => zone.type))
+    for (const type of requiredTypes) assert.ok(availableTypes.has(type), `missing climate type ${type}`)
+
+    for (const zone of climateZones) {
+      assert.ok(zone.global_distribution?.length > 24, `${zone.id} needs a broad global distribution`)
+      assert.ok(zone.global_distribution_label?.length > 2, `${zone.id} needs a distribution label`)
+      assert.ok(zone.global_examples?.length >= 3, `${zone.id} needs global examples`)
+      assert.ok(zone.global_controls?.length >= 3, `${zone.id} needs global controls`)
+      if (zone.type === 'highland') assert.ok(zone.distribution_pattern?.lines?.length >= 1, `${zone.id} needs mountain line geometry`)
+      else assert.ok(zone.distribution_pattern?.bands?.length >= 1, `${zone.id} needs latitude band geometry`)
+      for (const band of zone.distribution_pattern?.bands || []) {
+        assert.ok(Array.isArray(band.lat) && band.lat.length === 2, `${zone.id} band needs lat range`)
+        assert.ok(band.lat[0] >= -90 && band.lat[1] <= 90 && band.lat[0] < band.lat[1], `${zone.id} has invalid lat range`)
+      }
+    }
+  })
+
+  it('broadens terrain exploration with typical examples and tectonic modes', () => {
+    const ids = terrainFeatures.map((feature) => feature.id)
+    assert.ok([
+      'san-andreas-fault',
+      'yellowstone-caldera',
+      'hawaiian-islands',
+      'great-lakes',
+      'atacama-desert',
+      'australian-outback'
+    ].every((id) => ids.includes(id)))
+    assert.ok(terrainFeatures.length >= 35)
+
+    const tectonicModes = new Set(terrainFeatures.map((feature) => feature.tectonics?.mode).filter(Boolean))
+    assert.ok(['collision', 'subduction', 'divergence', 'spreading', 'transform', 'hotspot'].every((mode) => tectonicModes.has(mode)))
+  })
+
   it('keeps required country, region and ocean covers real, local and available', async () => {
     const [countryMeta, countriesGeo] = await Promise.all([
       readJson('public/geo/country-meta.json'),
@@ -206,7 +241,7 @@ describe('WorldLens 2.0 data foundations', () => {
       await assertImageFileExists(imagePath)
     }
     const routeImages = culturalRoutes.flatMap((route) => route.nodes.map((node) => ({
-      id: `${route.id}/${node.id}`,
+      id: `${route.routeId}/${node.id}`,
       cover_image: node.image
     })))
     await assertUniqueImageContent(routeImages, 'route node image')

@@ -38,12 +38,307 @@ export const climateFactors = [
 
 export const climateColors = Object.fromEntries(climateTypes.map((type) => [type.code, type.color]))
 
+export const climateDistributionProfiles = {
+  tropical_rainforest: {
+    label: '赤道湿热带',
+    distribution: '主要沿赤道两侧展开，集中在亚马逊、刚果盆地、东南亚群岛和部分中美洲低地；共同特征是全年高温、对流旺盛、森林蒸散强。',
+    controls: ['赤道低压', '太阳辐射', '森林蒸散', '信风水汽'],
+    examples: ['亚马逊盆地', '刚果盆地', '马来群岛', '中美洲加勒比沿岸'],
+    pattern: {
+      areas: [
+        { label: '亚马逊湿热核心', lat: [-12, 7], lng: [-82, -45] },
+        { label: '刚果盆地湿热核心', lat: [-8, 6], lng: [10, 32] },
+        { label: '东南亚岛弧湿热区', lat: [-8, 9], lng: [95, 150] },
+        { label: '中美洲湿热走廊', lat: [5, 17], lng: [-92, -76] }
+      ]
+    }
+  },
+  tropical_monsoon: {
+    label: '热带季风雨带',
+    distribution: '分布在热带大陆东岸和季风海陆交界地带，雨季由海洋水汽推进，旱季受大陆气团或副热带高压控制。',
+    controls: ['海陆热力差异', '季风反转', '山地抬升', '热带海温'],
+    examples: ['南亚', '中南半岛', '西非几内亚湾北缘', '中美洲太平洋侧'],
+    pattern: {
+      areas: [
+        { label: '南亚季风核心', lat: [7, 27], lng: [67, 94] },
+        { label: '中南半岛季风区', lat: [5, 23], lng: [95, 112] },
+        { label: '西非季风北进带', lat: [5, 18], lng: [-17, 12] },
+        { label: '中美洲季风边缘', lat: [7, 18], lng: [-92, -76] }
+      ]
+    }
+  },
+  temperate_monsoon: {
+    label: '温带季风东岸带',
+    distribution: '主要位于中纬度大陆东岸，夏季海洋水汽北上，冬季大陆冷高压南下，形成雨热同期与冬夏风向反转。',
+    controls: ['海陆热力差异', '大陆冷高压', '西太平洋水汽', '高原热力作用'],
+    examples: ['中国东部', '朝鲜半岛', '日本列岛', '俄罗斯远东南部'],
+    pattern: {
+      areas: [
+        { label: '中国东部季风带', lat: [22, 42], lng: [104, 123] },
+        { label: '东北亚季风边缘', lat: [34, 48], lng: [120, 145] },
+        { label: '日本海洋季风带', lat: [30, 45], lng: [129, 146] }
+      ]
+    }
+  },
+  hot_desert: {
+    label: '副热带干旱带',
+    distribution: '主要沿南北纬 15-35 度副热带高压带和寒流海岸展开，包括北非-阿拉伯、澳大利亚内陆、北美西南、阿塔卡马等干旱核心。',
+    controls: ['副热带高压', '下沉气流', '寒流稳定层', '大陆内部位置'],
+    examples: ['撒哈拉-阿拉伯干旱带', '澳大利亚内陆', '北美西南部', '阿塔卡马沿岸'],
+    pattern: {
+      areas: [
+        { label: '撒哈拉-阿拉伯干旱带', lat: [14, 33], lng: [-18, 58] },
+        { label: '澳大利亚内陆干旱带', lat: [-34, -18], lng: [113, 146] },
+        { label: '北美西南干旱带', lat: [24, 37], lng: [-118, -98] },
+        { label: '阿塔卡马寒流干旱带', lat: [-29, -15], lng: [-78, -68] }
+      ]
+    }
+  },
+  mediterranean: {
+    label: '西岸夏干冬雨带',
+    distribution: '常见于 30-45 度大陆西岸，夏季被副热带高压压干，冬季西风带回归带来锋面雨。',
+    controls: ['副热带高压季移', '西风带', '大陆西岸', '海陆热量差'],
+    examples: ['地中海沿岸', '加州沿岸', '智利中部', '开普地区', '澳大利亚西南部'],
+    pattern: {
+      areas: [
+        { label: '地中海沿岸', lat: [31, 45], lng: [-10, 38] },
+        { label: '加州沿岸', lat: [32, 41], lng: [-124, -116] },
+        { label: '智利中部', lat: [-38, -30], lng: [-74, -69] },
+        { label: '开普地区', lat: [-36, -31], lng: [16, 30] },
+        { label: '澳大利亚西南部', lat: [-36, -30], lng: [114, 122] }
+      ]
+    }
+  },
+  oceanic: {
+    label: '西风海洋调节带',
+    distribution: '主要位于中高纬大陆西岸和海岛，受西风、暖流和海洋热容量调节，冬夏温差小、降水较均匀。',
+    controls: ['盛行西风', '暖流调温', '海洋热容量', '迎风坡抬升'],
+    examples: ['西欧', '不列颠群岛', '北美太平洋西北岸', '新西兰', '智利南部'],
+    pattern: {
+      areas: [
+        { label: '西欧海洋性带', lat: [43, 62], lng: [-12, 16] },
+        { label: '北美太平洋西北岸', lat: [42, 58], lng: [-132, -122] },
+        { label: '新西兰海洋性带', lat: [-47, -34], lng: [166, 179] },
+        { label: '智利南部海洋性带', lat: [-48, -38], lng: [-76, -70] }
+      ]
+    }
+  },
+  continental: {
+    label: '内陆温差放大带',
+    distribution: '分布于中纬度大陆内部，远离海洋调温，冬夏温差大，冷暖气团交锋强，常形成粮食带和极端天气带。',
+    controls: ['远离海洋', '南北气团通道', '西风扰动', '山脉雨影'],
+    examples: ['北美大平原', '东欧平原', '西西伯利亚南缘', '东北亚内陆'],
+    pattern: {
+      areas: [
+        { label: '北美大陆性核心', lat: [36, 55], lng: [-108, -72] },
+        { label: '东欧-西西伯利亚大陆性带', lat: [45, 60], lng: [25, 100] },
+        { label: '东北亚内陆大陆性带', lat: [40, 54], lng: [105, 132] }
+      ]
+    }
+  },
+  subarctic: {
+    label: '亚寒带针叶林带',
+    distribution: '环绕北半球高纬大陆内部，冬季漫长严寒，夏季短促，针叶林、冻土和低密度聚落是典型景观。',
+    controls: ['高纬低太阳角', '大陆冷高压', '冻土', '短夏生长期'],
+    examples: ['西伯利亚', '阿拉斯加内陆', '加拿大北部', '斯堪的纳维亚北部'],
+    pattern: {
+      areas: [
+        { label: '加拿大-阿拉斯加亚寒带', lat: [55, 70], lng: [-165, -55] },
+        { label: '西伯利亚亚寒带', lat: [55, 72], lng: [35, 150] },
+        { label: '北欧亚寒带', lat: [58, 70], lng: [5, 35] }
+      ]
+    }
+  },
+  polar: {
+    label: '极地冰雪带',
+    distribution: '位于高纬极地和大型冰盖区域，太阳高度低、冰雪反照率高，冷源影响海冰、洋流和全球海平面。',
+    controls: ['低太阳角', '冰雪反照率', '极地高压', '海冰反馈'],
+    examples: ['格陵兰冰盖', '南极大陆', '北极群岛', '高北极海冰边缘'],
+    pattern: {
+      areas: [
+        { label: '格陵兰冰盖', lat: [60, 84], lng: [-74, -12] },
+        { label: '加拿大北极群岛', lat: [66, 82], lng: [-125, -60] },
+        { label: '欧亚高北极', lat: [68, 82], lng: [10, 120] },
+        { label: '南极冰盖', lat: [-88, -66], lng: [-180, -120] },
+        { label: '南极冰盖', lat: [-88, -66], lng: [-120, -60] },
+        { label: '南极冰盖', lat: [-88, -66], lng: [-60, 0] },
+        { label: '南极冰盖', lat: [-88, -66], lng: [0, 60] },
+        { label: '南极冰盖', lat: [-88, -66], lng: [60, 120] },
+        { label: '南极冰盖', lat: [-88, -66], lng: [120, 180] }
+      ]
+    }
+  },
+  highland: {
+    label: '山地垂直气候带',
+    distribution: '沿全球主要山系出现，海拔把气温、降水、植被和聚落切成垂直带，同一纬度也能出现从暖湿谷地到冰雪高山的阶梯。',
+    controls: ['海拔递减率', '迎风坡降水', '雨影', '坡向日照'],
+    examples: ['青藏高原-喜马拉雅', '安第斯山脉', '落基山脉', '东非高地', '阿尔卑斯山'],
+    pattern: {
+      lines: [
+        { label: '喜马拉雅-青藏高地', path: [[27, 74], [30, 82], [32, 90], [34, 98]], width: 0.028 },
+        { label: '安第斯山脉', path: [[8, -76], [-5, -78], [-18, -72], [-32, -70], [-50, -72]], width: 0.026 },
+        { label: '落基山脉', path: [[58, -126], [49, -116], [41, -110], [33, -106]], width: 0.022 },
+        { label: '东非高地', path: [[12, 39], [4, 38], [-3, 37], [-10, 35]], width: 0.02 },
+        { label: '阿尔卑斯山', path: [[45, 6], [46, 9], [47, 12], [46, 15]], width: 0.018 }
+      ]
+    }
+  }
+}
+
+const fallbackClimateProfile = {
+  label: '全球气候带',
+  distribution: '这种气候不是单个地点现象，而是在相似纬度、海陆位置、地形和大气环流条件下重复出现的全球环境模式。',
+  controls: ['纬度', '海陆位置', '大气环流'],
+  examples: ['典型区域', '相似纬度带', '相似海陆边界'],
+  pattern: {
+    areas: [
+      { label: '示意分布 A', lat: [-10, 10], lng: [-60, -20] },
+      { label: '示意分布 B', lat: [-10, 10], lng: [20, 60] }
+    ]
+  }
+}
+
+export const climateLatitudeBandProfiles = {
+  tropical_rainforest: {
+    label: '赤道雨林带',
+    distribution: '按纬度看，热带雨林主要落在赤道附近约南北纬 10 度以内；典型案例再落到亚马逊、刚果和东南亚岛屿等湿热核心。',
+    controls: ['低纬强辐射', '赤道低压', '常年对流', '森林蒸散'],
+    examples: ['亚马逊盆地', '刚果盆地', '东南亚岛屿'],
+    bands: [{ label: '赤道雨林带', lat: [-10, 10] }]
+  },
+  tropical_monsoon: {
+    label: '热带季风带',
+    distribution: '热带季风作为低纬季节性雨带，主要放在南北纬约 5-25 度之间；典型案例用南亚、东南亚和西非季风区说明。',
+    controls: ['低纬热量', '海陆热力差', '季风反转', '雨季推进'],
+    examples: ['南亚季风区', '中南半岛', '西非季风带'],
+    bands: [
+      { label: '北半球热带季风带', lat: [5, 25] },
+      { label: '南半球热带季风带', lat: [-25, -5] }
+    ]
+  },
+  savanna: {
+    label: '热带草原带',
+    distribution: '热带草原位于赤道雨林外侧，约南北纬 10-25 度，是湿热赤道带向副热带干旱带过渡的干湿季区域。',
+    controls: ['太阳直射季移', '干湿季交替', '副热带高压边缘'],
+    examples: ['东非草原', '巴西高原', '澳大利亚北部'],
+    bands: [
+      { label: '北半球热带草原带', lat: [10, 25] },
+      { label: '南半球热带草原带', lat: [-25, -10] }
+    ]
+  },
+  hot_desert: {
+    label: '副热带沙漠带',
+    distribution: '热带沙漠按纬度主要显示在南北纬约 20-35 度，那里常受副热带高压下沉气流控制。',
+    controls: ['副热带高压', '下沉气流', '蒸发强', '寒流辅助干旱'],
+    examples: ['撒哈拉沙漠', '阿拉伯沙漠', '澳大利亚内陆'],
+    bands: [
+      { label: '北半球副热带沙漠带', lat: [20, 35] },
+      { label: '南半球副热带沙漠带', lat: [-35, -20] }
+    ]
+  },
+  cold_desert: {
+    label: '中纬内陆干旱带',
+    distribution: '冷沙漠可简化放在中纬度大陆内部约 35-50 度，是远离海洋或处在雨影中的低温干旱带。',
+    controls: ['大陆内部', '雨影效应', '蒸发大于降水'],
+    examples: ['戈壁', '塔克拉玛干', '大盆地'],
+    bands: [
+      { label: '北半球中纬内陆干旱带', lat: [35, 50] },
+      { label: '南半球中纬内陆干旱带', lat: [-50, -35] }
+    ]
+  },
+  mediterranean: {
+    label: '地中海气候带',
+    distribution: '地中海气候按纬度主要标在南北纬约 30-45 度，表现为夏干冬雨，是副热带高压和西风带季节摆动的结果。',
+    controls: ['夏季高压', '冬季西风', '大陆西岸', '季节摆动'],
+    examples: ['地中海沿岸', '加州沿岸', '智利中部'],
+    bands: [
+      { label: '北半球地中海气候带', lat: [30, 45] },
+      { label: '南半球地中海气候带', lat: [-45, -30] }
+    ]
+  },
+  humid_subtropical: {
+    label: '湿润亚热带带',
+    distribution: '湿润亚热带简化显示在约南北纬 20-35 度的暖湿过渡带，再用东亚、美国东南部等典型案例解释海陆位置差异。',
+    controls: ['暖湿气流', '副热带边缘', '季节性降水'],
+    examples: ['中国东南部', '美国东南部', '南美东南部'],
+    bands: [
+      { label: '北半球湿润亚热带带', lat: [20, 35] },
+      { label: '南半球湿润亚热带带', lat: [-35, -20] }
+    ]
+  },
+  temperate_monsoon: {
+    label: '温带季风带',
+    distribution: '温带季风按纬度放在约北纬 30-50 度的温带东岸带；典型案例用中国东部、朝鲜半岛和日本说明。',
+    controls: ['温带纬度', '海陆热力差', '冬夏风向反转'],
+    examples: ['中国东部', '朝鲜半岛', '日本列岛'],
+    bands: [{ label: '北半球温带季风带', lat: [30, 50] }]
+  },
+  oceanic: {
+    label: '温带海洋性带',
+    distribution: '海洋性气候按纬度显示在约 40-60 度温带西风带，典型案例再落到西欧、不列颠群岛、新西兰等海洋调节区。',
+    controls: ['西风带', '海洋调温', '暖流', '全年湿润'],
+    examples: ['西欧', '不列颠群岛', '新西兰'],
+    bands: [
+      { label: '北半球温带海洋性带', lat: [40, 60] },
+      { label: '南半球温带海洋性带', lat: [-60, -40] }
+    ]
+  },
+  continental: {
+    label: '温带大陆性带',
+    distribution: '大陆性气候按纬度放在约 35-60 度的中纬内陆带，强调远离海洋后冬夏温差被放大。',
+    controls: ['中纬内陆', '海洋调节弱', '年温差大', '冷暖气团交锋'],
+    examples: ['北美大平原', '东欧平原', '西西伯利亚南缘'],
+    bands: [
+      { label: '北半球温带大陆性带', lat: [35, 60] },
+      { label: '南半球温带大陆性带', lat: [-55, -35] }
+    ]
+  },
+  subarctic: {
+    label: '亚寒带带',
+    distribution: '亚寒带按纬度显示在约北纬 55-70 度，是寒带和温带之间的针叶林、冻土和长冬区域。',
+    controls: ['高纬低太阳角', '长冬短夏', '冻土', '大陆冷源'],
+    examples: ['西伯利亚', '加拿大北部', '阿拉斯加内陆'],
+    bands: [{ label: '北半球亚寒带带', lat: [55, 70] }]
+  },
+  polar: {
+    label: '极地带',
+    distribution: '极地气候按纬度显示在南北纬约 66.5 度以上，重点表达低太阳高度、冰雪反照率和极昼极夜。',
+    controls: ['低太阳角', '冰雪反照率', '极昼极夜', '海冰反馈'],
+    examples: ['格陵兰冰盖', '南极大陆', '北极群岛'],
+    bands: [
+      { label: '北极气候带', lat: [66.5, 90] },
+      { label: '南极气候带', lat: [-90, -66.5] }
+    ]
+  },
+  highland: {
+    label: '高山垂直气候带',
+    distribution: '高山气候不能只靠纬度解释，所以图层保留山脉线作为补充；它表示海拔让同一纬度出现垂直气候差异。',
+    controls: ['海拔', '迎风坡', '雨影', '坡向日照'],
+    examples: ['青藏高原', '安第斯山脉', '落基山脉'],
+    bands: [],
+    lines: [
+      { label: '喜马拉雅-青藏高地', path: [[27, 74], [30, 82], [32, 90], [34, 98]], width: 0.028 },
+      { label: '安第斯山脉', path: [[8, -76], [-5, -78], [-18, -72], [-32, -70], [-50, -72]], width: 0.026 },
+      { label: '落基山脉', path: [[58, -126], [49, -116], [41, -110], [33, -106]], width: 0.022 }
+    ]
+  }
+}
+
+function cloneDistributionPattern(pattern = {}) {
+  return {
+    bands: (pattern.bands || []).map((band) => ({ ...band, lat: [...band.lat], lng: band.lng ? [...band.lng] : [-180, 180] })),
+    areas: (pattern.areas || []).map((area) => ({ ...area, lat: [...area.lat], lng: [...area.lng] })),
+    lines: (pattern.lines || []).map((line) => ({ ...line, path: line.path.map((point) => [...point]) }))
+  }
+}
+
 const now = '2026-05-31T00:00:00.000Z'
 const cachedUnsplash = (id) => `/images/cached/unsplash/${id}.jpg`
 const specialCover = (id, ext = 'jpg') => `/images/cached/special/${id}.${ext}`
 const image = (id) => cachedUnsplash(id)
 
 function makeZone(zone) {
+  const profile = climateLatitudeBandProfiles[zone.type] || climateDistributionProfiles[zone.type] || fallbackClimateProfile
   const coverImage = zone.cover_image || ''
   return {
     created_at: now,
@@ -56,6 +351,11 @@ function makeZone(zone) {
     tags: [],
     factors: [],
     story_steps: [],
+    global_distribution_label: profile.label,
+    global_distribution: profile.distribution,
+    global_controls: [...profile.controls],
+    global_examples: [...profile.examples],
+    distribution_pattern: cloneDistributionPattern(profile.pattern || profile),
     ...zone,
     cover_image: coverImage,
     gallery_images: [coverImage, ...(zone.gallery_images || [])].filter(Boolean)

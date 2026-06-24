@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:worldlens_test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+worldlens:
+  auth:
+    token-days: 7
+    admin-registration-key: test-admin-key

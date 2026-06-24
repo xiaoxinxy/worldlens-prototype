@@ -96,7 +96,7 @@ export const culturalRoutes = [
         lat: 27.4698,
         lng: 83.275,
         description: '佛陀诞生地，连接印度平原、喜马拉雅山麓和南亚朝圣传统。',
-        image: cachedUnsplash('photo-1544735716-392fe2489ffa'),
+        image: cachedUnsplash('photo-1524492412937-b28074a5d7da'),
         wikiUrl: 'https://zh.wikipedia.org/wiki/%E8%93%9D%E6%AF%97%E5%B0%BC'
       },
       {
@@ -256,7 +256,7 @@ export const culturalRoutes = [
         lat: 23.588,
         lng: 58.3829,
         description: '阿拉伯海门户，航海传统与香料、乳香贸易在此交汇。',
-        image: '/images/wiki/country/omn-1.jpg',
+        image: '/images/wiki/country/omn-2.jpg',
         wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%A9%AC%E6%96%AF%E5%96%80%E7%89%B9'
       },
       {
@@ -348,6 +348,186 @@ export const culturalRoutes = [
         description: '西地中海港口，希腊殖民、罗马交通和现代移民文化在这里叠合。',
         image: '/images/places/france-gallery-4.jpg',
         wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%A9%AC%E8%B5%9B'
+      }
+    ]
+  },
+  {
+    routeId: 'indian-ocean-trade',
+    name: '印度洋季风贸易',
+    intro: '借助季风的定期转换，阿拉伯、印度、东南亚与东非港口形成跨海商业网络，香料、瓷器、棉布、宗教和航海知识沿海路往返流动。',
+    period: '公元1世纪至18世纪',
+    countries: ['阿曼', '印度', '斯里兰卡', '马来西亚', '印度尼西亚', '肯尼亚'],
+    keywords: ['季风航海', '港口城市', '香料', '伊斯兰传播'],
+    nodes: [
+      {
+        id: 'indian-muscat',
+        name: '马斯喀特',
+        country: '阿曼',
+        lat: 23.588,
+        lng: 58.3829,
+        description: '阿拉伯海入口港，阿曼航海传统把波斯湾、东非和印度西岸连接起来。',
+        image: '/images/wiki/country/omn-1.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%A9%AC%E6%96%AF%E5%96%80%E7%89%B9'
+      },
+      {
+        id: 'indian-calicut',
+        name: '科泽科德',
+        country: '印度',
+        lat: 11.2588,
+        lng: 75.7804,
+        description: '马拉巴尔海岸的重要胡椒港，阿拉伯、印度和欧洲商人在这里交易香料与棉布。',
+        image: cachedUnsplash('photo-1498654896293-37aacf113fd9'),
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E7%A7%91%E6%B3%BD%E7%A7%91%E5%BE%B7'
+      },
+      {
+        id: 'indian-galle',
+        name: '加勒',
+        country: '斯里兰卡',
+        lat: 6.0329,
+        lng: 80.2168,
+        description: '斯里兰卡南岸港口，位于跨印度洋航线的中继位置。',
+        image: '/images/places/indian-ocean-gallery-1.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%8B%92'
+      },
+      {
+        id: 'indian-malacca',
+        name: '马六甲',
+        country: '马来西亚',
+        lat: 2.1896,
+        lng: 102.2501,
+        description: '扼守海峡的转运港，把印度洋和南海贸易节奏连接到一起。',
+        image: cachedUnsplash('photo-1516937941344-00b4e0337589'),
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%85%AD%E7%94%B2%E5%B8%82'
+      },
+      {
+        id: 'indian-zanzibar',
+        name: '桑给巴尔',
+        country: '坦桑尼亚',
+        lat: -6.1659,
+        lng: 39.2026,
+        description: '东非斯瓦希里海岸的商业节点，象牙、香料和伊斯兰城市文化在这里交织。',
+        image: '/images/places/indian-ocean-gallery-2.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E6%A1%91%E7%BB%99%E5%B7%B4%E5%B0%94'
+      }
+    ]
+  },
+  {
+    routeId: 'trans-saharan-trade',
+    name: '跨撒哈拉贸易',
+    intro: '骆驼商队沿绿洲、水井和沙漠边缘移动，把北非、萨赫勒和西非王国连接起来，黄金、盐、书籍和宗教共同塑造沙漠商路。',
+    period: '8世纪至16世纪',
+    countries: ['摩洛哥', '阿尔及利亚', '马里', '尼日尔', '埃及'],
+    keywords: ['骆驼商队', '绿洲', '黄金与盐', '伊斯兰学术'],
+    nodes: [
+      {
+        id: 'sahara-marrakesh',
+        name: '马拉喀什',
+        country: '摩洛哥',
+        lat: 31.6295,
+        lng: -7.9811,
+        description: '阿特拉斯山北侧的商贸城市，是通往撒哈拉南缘的重要门户。',
+        image: cachedUnsplash('photo-1509316785289-025f5b846b35'),
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%A9%AC%E6%8B%89%E5%96%80%E4%BB%80'
+      },
+      {
+        id: 'sahara-sijilmasa',
+        name: '锡吉尔马萨',
+        country: '摩洛哥',
+        lat: 31.282,
+        lng: -4.267,
+        description: '古代绿洲商站，商队在这里整备后穿越沙漠。',
+        image: '/images/cached/special/australian-outback.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%94%A1%E5%90%89%E5%B0%94%E9%A9%AC%E8%90%A8'
+      },
+      {
+        id: 'sahara-timbuktu',
+        name: '廷巴克图',
+        country: '马里',
+        lat: 16.7666,
+        lng: -3.0026,
+        description: '尼日尔河弯曲部的学术与贸易中心，盐、黄金和手稿让它成为撒哈拉南缘的象征城市。',
+        image: '/images/cached/special/arabian-desert.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E5%BB%B7%E5%B7%B4%E5%85%8B%E5%9B%BE'
+      },
+      {
+        id: 'sahara-agadez',
+        name: '阿加德兹',
+        country: '尼日尔',
+        lat: 16.9742,
+        lng: 7.9865,
+        description: '撒哈拉中部商队节点，连接豪萨地区、图阿雷格路线与北非绿洲。',
+        image: '/images/cached/special/gobi-desert.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%98%BF%E5%8A%A0%E5%BE%B7%E5%85%B9'
+      },
+      {
+        id: 'sahara-cairo',
+        name: '开罗',
+        country: '埃及',
+        lat: 30.0444,
+        lng: 31.2357,
+        description: '尼罗河和地中海世界的交汇点，书籍、学者和商品在这里进入更大的伊斯兰网络。',
+        image: '/images/places/egypt-gallery-1.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E5%BC%80%E7%BD%97'
+      }
+    ]
+  },
+  {
+    routeId: 'tea-horse-road',
+    name: '茶马古道',
+    intro: '从云南、四川茶区翻越横断山脉进入青藏高原，茶叶、马匹、盐、药材和宗教文化在山地驿道上长期交换。',
+    period: '唐宋至20世纪',
+    countries: ['中国', '尼泊尔', '印度'],
+    keywords: ['山地驿道', '茶叶', '马帮', '高原交流'],
+    nodes: [
+      {
+        id: 'tea-ya-an',
+        name: '雅安',
+        country: '中国',
+        lat: 29.9805,
+        lng: 103.0133,
+        description: '川茶产地和茶马交易起点之一，茶叶从这里进入川藏山地通道。',
+        image: '/images/places/china-gallery-2.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%9B%85%E5%AE%89%E5%B8%82'
+      },
+      {
+        id: 'tea-lijiang',
+        name: '丽江',
+        country: '中国',
+        lat: 26.8721,
+        lng: 100.2296,
+        description: '滇西北山地交通节点，纳西文化、马帮贸易和高原路线在这里交会。',
+        image: '/images/wiki/country/chn-2.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E4%B8%BD%E6%B1%9F%E5%B8%82'
+      },
+      {
+        id: 'tea-shangri-la',
+        name: '香格里拉',
+        country: '中国',
+        lat: 27.8253,
+        lng: 99.7078,
+        description: '横断山脉中的高原驿站，连接云南、四川与藏区寺院网络。',
+        image: '/images/cached/special/rocky-mountains.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E5%B8%82'
+      },
+      {
+        id: 'tea-lhasa',
+        name: '拉萨',
+        country: '中国',
+        lat: 29.652,
+        lng: 91.1721,
+        description: '青藏高原的宗教与贸易中心，茶叶、马匹和朝圣路线在这里汇合。',
+        image: '/images/cached/special/lake-baikal.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E6%8B%89%E8%90%A8%E5%B8%82'
+      },
+      {
+        id: 'tea-kathmandu',
+        name: '加德满都',
+        country: '尼泊尔',
+        lat: 27.7172,
+        lng: 85.324,
+        description: '喜马拉雅南麓的谷地城市，连接藏区、南亚和山地商贸文化。',
+        image: '/images/wiki/country/che-1.jpg',
+        wikiUrl: 'https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%BE%B7%E6%BB%A1%E9%83%BD'
       }
     ]
   }

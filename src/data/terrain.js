@@ -15,12 +15,14 @@ export const terrainTypes = [
   { id: 'type-reef', code: 'reef', name: 'Reefs', label: '珊瑚礁', description: '珊瑚和海洋生物长期建造出的浅海生态地貌。', icon: '✧' },
   { id: 'type-trench', code: 'trench', name: 'Trenches', label: '海沟', description: '板块俯冲边界形成的深海线性洼地。', icon: '⌵' },
   { id: 'type-ridge', code: 'ridge', name: 'Ocean Ridges', label: '海岭', description: '板块张裂处岩浆上涌形成的海底山脉与扩张边界。', icon: '⌃' },
-  { id: 'type-rift', code: 'rift', name: 'Rift Valleys', label: '裂谷', description: '地壳拉张、断裂和沉降形成的线性低地系统。', icon: '⋯' }
+  { id: 'type-rift', code: 'rift', name: 'Rift Valleys', label: '裂谷', description: '地壳拉张、断裂和沉降形成的线性低地系统。', icon: '⋯' },
+  { id: 'type-fault', code: 'fault', name: 'Faults', label: '断层', description: '地壳沿破裂带相对错动，记录板块边界与地震活动。', icon: '⇄' }
 ]
 
 const now = '2026-05-31T00:00:00.000Z'
 const cachedUnsplash = (id) => `/images/cached/unsplash/${id}.jpg`
 const specialCover = (id, ext = 'jpg') => `/images/cached/special/${id}.${ext}`
+const wikiDynamic = (id, ext = 'jpg') => `/images/wiki/dynamic/${id}.${ext}`
 const image = (id) => cachedUnsplash(id)
 
 const terrainShapeCatalog = {
@@ -52,7 +54,13 @@ const terrainShapeCatalog = {
   'deccan-plateau': { kind: 'area', center: [17, 77], radius: 0.32, aspect: [1.2, 1.35] },
   'great-plains': { kind: 'area', center: [42, -101], radius: 0.42, aspect: [0.9, 1.75] },
   'japanese-archipelago': { kind: 'line', path: [[43, 141], [39, 141], [36, 139], [33.5, 133], [31, 130]], width: 0.022 },
-  'mid-atlantic-ridge': { kind: 'line', path: [[65, -28], [45, -30], [25, -35], [5, -28], [-20, -14], [-40, -12]], width: 0.026 }
+  'mid-atlantic-ridge': { kind: 'line', path: [[65, -28], [45, -30], [25, -35], [5, -28], [-20, -14], [-40, -12]], width: 0.026 },
+  'san-andreas-fault': { kind: 'line', path: [[33.4, -116.2], [34.2, -117.2], [35.6, -119.6], [37.2, -121.9], [39.2, -123.6]], width: 0.02 },
+  'yellowstone-caldera': { kind: 'area', center: [44.43, -110.67], radius: 0.13, aspect: [1.38, 0.88] },
+  'hawaiian-islands': { kind: 'line', path: [[19.4, -155.6], [20.8, -157.1], [21.3, -158], [22.1, -159.5]], width: 0.022 },
+  'great-lakes': { kind: 'area', center: [45.2, -84.5], radius: 0.28, aspect: [1.95, 0.8] },
+  'atacama-desert': { kind: 'area', center: [-24.5, -69.2], radius: 0.27, aspect: [0.62, 2.25] },
+  'australian-outback': { kind: 'area', center: [-24.8, 133.5], radius: 0.42, aspect: [1.42, 1.05] }
 }
 
 const terrainTectonicsCatalog = {
@@ -109,6 +117,33 @@ const terrainTectonicsCatalog = {
       { name: '欧亚边缘', from: [39, 132], to: [36, 138] }
     ],
     steps: ['海洋板块俯冲释放流体', '地幔局部熔融', '岩浆沿薄弱带上升', '多次喷发堆积出富士山']
+  },
+  'san-andreas-fault': {
+    mode: 'transform',
+    title: '太平洋板块与北美板块横向错动',
+    plates: [
+      { name: '太平洋板块', from: [31.5, -123.5], to: [37.8, -120.6] },
+      { name: '北美板块', from: [40.8, -119], to: [34.8, -122.6] }
+    ],
+    steps: ['两侧板块沿断层横向滑移', '岩石被锁定并积累弹性应变', '突然破裂释放能量', '形成线性断谷、错移河道和强震带']
+  },
+  'yellowstone-caldera': {
+    mode: 'hotspot',
+    title: '北美板块掠过地幔热点',
+    plates: [
+      { name: '北美板块', from: [42, -118], to: [44.4, -111.1] },
+      { name: '地幔热点', from: [43, -107], to: [44.4, -110.7] }
+    ],
+    steps: ['深部热异常持续供给岩浆', '板块移动留下火山轨迹', '巨量喷发后岩顶塌陷', '形成黄石破火山口和热泉系统']
+  },
+  'hawaiian-islands': {
+    mode: 'hotspot',
+    title: '太平洋板块越过稳定热点',
+    plates: [
+      { name: '太平洋板块', from: [24, -160.5], to: [20, -155.8] },
+      { name: '热点柱', from: [17.5, -154], to: [19.4, -155.5] }
+    ],
+    steps: ['热点持续向上输送玄武质岩浆', '板块移动让火山依次远离热点', '新岛在热点上方生长', '形成由新到老排列的岛链']
   }
 }
 
@@ -123,7 +158,9 @@ const terrainReliefByType = {
   volcano: 'volcanic-cone',
   island_chain: 'volcanic-arc',
   trench: 'deep-subduction-line',
-  ridge: 'seafloor-spreading-line'
+  ridge: 'seafloor-spreading-line',
+  rift: 'crustal-extension',
+  fault: 'strike-slip-boundary'
 }
 
 const terrainPeakCatalog = {
@@ -905,6 +942,162 @@ export const terrainFeatures = [
     tags: ['海底山脉', '海底扩张', '热液喷口', '板块构造'],
     search_aliases: ['中洋脊', '海底山脉'],
     cover_image: specialCover('mid-atlantic-ridge', 'png')
+  }),
+  makeFeature({
+    id: 'san-andreas-fault',
+    name: '圣安德烈亚斯断层',
+    name_en: 'San Andreas Fault',
+    type: 'fault',
+    type_label: '断层',
+    continent: '北美洲',
+    region: '美国加利福尼亚',
+    country_codes: ['USA'],
+    latitude: 36.5,
+    longitude: -121.0,
+    elevation: '',
+    area: '',
+    length: '约 1,300 km',
+    summary: '圣安德烈亚斯断层是太平洋板块和北美板块之间最著名的转换边界之一。它不像山脉那样高耸，却用线性的谷地、错移河道和频繁地震暴露出板块正在擦肩而过。',
+    formation_reason: '两侧岩块沿断层水平错动，摩擦会让地壳短暂锁定并积累应力。当锁定段突然破裂，能量以地震形式释放，断层带上的线性谷地、破碎岩石和错位地貌也随之形成。',
+    climate_impact: '断层本身不直接控制大尺度气候，但它塑造的谷地、山前带和盆地会影响局地风道、水系分布和城市扩张方向。',
+    civilization_impact: '洛杉矶、旧金山湾区等人口密集区必须把断层带纳入城市规划、建筑抗震、交通走廊和灾害预警体系。',
+    ecology: '断层谷地连接山地、草原、灌丛和湿地，破碎地形给许多局地生态斑块提供了边界和通道。',
+    human_activity: '地震监测、断层测绘、道路和水渠跨越设计是这里最典型的人类活动。断层也是理解现代地震风险的天然实验场。',
+    related_routes: [],
+    related_terrain_ids: ['rocky-mountains', 'yellowstone-caldera'],
+    tags: ['转换断层', '走滑错动', '地震带', '板块边界'],
+    search_aliases: ['圣安地列斯断层', '加州断层', '转换边界'],
+    cover_image: image('photo-1500375592092-40eb2168fd21')
+  }),
+  makeFeature({
+    id: 'yellowstone-caldera',
+    name: '黄石破火山口',
+    name_en: 'Yellowstone Caldera',
+    type: 'volcano',
+    type_label: '破火山口',
+    continent: '北美洲',
+    region: '美国落基山地',
+    country_codes: ['USA'],
+    latitude: 44.43,
+    longitude: -110.67,
+    elevation: '约 2,357 m',
+    area: '约 3,500 km²',
+    length: '',
+    summary: '黄石破火山口是北美最醒目的热点火山系统之一。喷泉、间歇泉、热泉和宽阔塌陷盆地说明这里的地表下仍保存着巨大的热量。',
+    formation_reason: '北美板块缓慢掠过地幔热点，深部岩浆长期补给上升。大规模喷发后岩浆房顶部塌陷，形成破火山口；之后热液系统继续把热量带到地表。',
+    climate_impact: '普通热液活动主要影响局地水汽和地热环境；极端大喷发则可能通过火山灰和气溶胶影响更大范围的气候，但这属于低频事件。',
+    civilization_impact: '黄石让火山监测、国家公园管理、地热景观保护和公众科学教育连接在一起，是认识超级火山风险的代表地点。',
+    ecology: '温泉微生物、针叶林、草甸和河谷湿地构成多层次生态系统，火山热液给局部栖息地提供了特殊条件。',
+    human_activity: '主要活动包括地震和地形变监测、温泉保护、旅游管理、道路维护以及火山风险科普。',
+    related_routes: [],
+    related_terrain_ids: ['rocky-mountains', 'san-andreas-fault'],
+    tags: ['热点火山', '破火山口', '地热系统', '超级喷发'],
+    search_aliases: ['黄石火山', '黄石超级火山', 'Yellowstone volcano'],
+    cover_image: wikiDynamic('yellowstone-1')
+  }),
+  makeFeature({
+    id: 'hawaiian-islands',
+    name: '夏威夷群岛',
+    name_en: 'Hawaiian Islands',
+    type: 'island_chain',
+    type_label: '岛链',
+    continent: '大洋洲',
+    region: '北太平洋',
+    country_codes: ['USA'],
+    latitude: 20.8,
+    longitude: -157.5,
+    elevation: '冒纳凯亚山 · 4207 m',
+    area: '约 16,600 km²',
+    length: '约 2,400 km（主岛链）',
+    summary: '夏威夷群岛是一串由火山热点写出的岛链。越靠东南的岛越年轻，越向西北越古老，像一条记录太平洋板块移动方向的时间轴。',
+    formation_reason: '相对稳定的地幔热点持续向上输送玄武质岩浆，太平洋板块从热点上方滑过，火山岛依次生成、抬升、侵蚀并远离热点。',
+    climate_impact: '高大的火山岛迫使信风抬升，迎风坡湿润多雨，背风坡相对干燥，形成强烈的微气候差异。',
+    civilization_impact: '岛链位置让航海、港口、旅游、农业和太平洋文化交流高度依赖海洋路径与火山地形。',
+    ecology: '火山岛隔离环境推动物种演化，雨林、熔岩荒原、海岸珊瑚和高山生态在短距离内并置。',
+    human_activity: '火山监测、海岸管理、旅游、天文观测和海洋保护共同围绕这串岛链展开。',
+    related_routes: [],
+    related_terrain_ids: ['japanese-archipelago', 'mount-fuji'],
+    tags: ['热点岛链', '盾状火山', '玄武岩', '海洋岛'],
+    search_aliases: ['夏威夷火山链', 'Hawaii hotspot'],
+    cover_image: wikiDynamic('mauna-loa-1')
+  }),
+  makeFeature({
+    id: 'great-lakes',
+    name: '北美五大湖',
+    name_en: 'Great Lakes',
+    type: 'lake',
+    type_label: '湖群',
+    continent: '北美洲',
+    region: '美国与加拿大边境',
+    country_codes: ['USA', 'CAN'],
+    latitude: 45.2,
+    longitude: -84.5,
+    elevation: '湖面约 74-183 m',
+    area: '约 244,000 km²',
+    length: '',
+    summary: '北美五大湖是世界最大的淡水湖群之一。它们不是简单的积水洼地，而是冰盖反复刨蚀、退缩和融水补给后留下的巨大湖盆。',
+    formation_reason: '第四纪冰盖覆盖北美时，厚重冰体刨蚀软弱岩层并加深谷地。冰川退缩后，融水填入这些低洼盆地，形成苏必利尔湖、密歇根湖、休伦湖、伊利湖和安大略湖。',
+    climate_impact: '湖水热容量大，会调节周边气温，增强湖效应降雪，并影响风、雾和沿岸湿度。',
+    civilization_impact: '五大湖支撑了港口、航运、工业城市、淡水供给和跨境经济带，是北美内陆最重要的水上交通系统之一。',
+    ecology: '湖岸湿地、深水湖盆、岛屿和河口共同组成复杂生态网络，也面临入侵物种和水质压力。',
+    human_activity: '航运、渔业、饮用水、工业取水、湖岸城市建设和水质治理是这里的核心活动。',
+    related_routes: [],
+    related_terrain_ids: ['great-plains', 'rocky-mountains'],
+    tags: ['冰川侵蚀', '淡水湖群', '冰退地貌', '湖盆'],
+    search_aliases: ['五大湖', '北美大湖'],
+    cover_image: image('photo-1507525428034-b723cf961d3e')
+  }),
+  makeFeature({
+    id: 'atacama-desert',
+    name: '阿塔卡马沙漠',
+    name_en: 'Atacama Desert',
+    type: 'desert',
+    type_label: '沙漠',
+    continent: '南美洲',
+    region: '智利北部 / 秘鲁南缘',
+    country_codes: ['CHL', 'PER'],
+    latitude: -24.5,
+    longitude: -69.2,
+    elevation: '约 2,000-4,000 m',
+    area: '约 105,000 km²',
+    length: '约 1,600 km',
+    summary: '阿塔卡马沙漠是地球上最干旱的地区之一。盐沼、砾漠、火山高原和几乎无雨的天空，让它成为理解寒流、雨影和副热带高压共同作用的典型样本。',
+    formation_reason: '安第斯山阻挡来自东侧的湿气，太平洋沿岸的洪堡寒流抑制空气上升，副热带高压又让下沉气流长期占优，三者共同制造出极端干旱环境。',
+    climate_impact: '干燥稳定的大气带来高透明度天空，也让昼夜温差、盐壳风化和雾水生态变得突出。',
+    civilization_impact: '矿业、天文台、绿洲城镇和沿海交通都围绕稀缺水资源展开，现代设施必须精细管理水和能源。',
+    ecology: '少量雾水、盐沼和高海拔湿地支撑特殊植物、微生物和火烈鸟等适应干旱的生物群落。',
+    human_activity: '铜矿、锂盐湖开采、天文观测、沙漠旅游和水资源调配是最典型的人类活动。',
+    related_routes: [],
+    related_terrain_ids: ['andes', 'sahara-desert'],
+    tags: ['雨影效应', '寒流干旱', '盐沼', '极端干旱'],
+    search_aliases: ['智利沙漠', 'Atacama'],
+    cover_image: image('photo-1501927023255-9063be98970c')
+  }),
+  makeFeature({
+    id: 'australian-outback',
+    name: '澳大利亚内陆',
+    name_en: 'Australian Outback',
+    type: 'desert',
+    type_label: '荒漠内陆',
+    continent: '大洋洲',
+    region: '澳大利亚内陆',
+    country_codes: ['AUS'],
+    latitude: -24.8,
+    longitude: 133.5,
+    elevation: '平均约 300-600 m',
+    area: '约 5,600,000 km²',
+    length: '',
+    summary: '澳大利亚内陆是一片古老、干旱而辽阔的红色地貌区。低缓台地、沙丘、盐湖和风化平原共同展示了稳定大陆长期被风、水和化学风化改造后的样子。',
+    formation_reason: '澳大利亚大陆长期远离活跃板块边界，地壳稳定、山脉低缓。副热带高压、内陆距离海洋远和古老岩层深度风化，让大面积红色荒漠和平原保存下来。',
+    climate_impact: '热量强、降水少且变化大，干旱和偶发洪水交替塑造河道、盐湖和植被分布。',
+    civilization_impact: '交通补给、牧业、矿业、原住民文化景观和少数内陆城镇都必须适应遥远距离与水资源不稳定。',
+    ecology: '灌丛、草地、沙漠植物和季节性湿地支撑适应干旱的生态系统，火和降雨节律很重要。',
+    human_activity: '矿产开发、牧场、长距离公路、铁路、生态保护和文化旅游是内陆空间的主要活动。',
+    related_routes: [],
+    related_terrain_ids: ['great-barrier-reef', 'gobi-desert'],
+    tags: ['古老陆块', '红色荒漠', '内陆干旱', '风化平原'],
+    search_aliases: ['澳洲内陆', '澳大利亚荒漠', 'Outback'],
+    cover_image: specialCover('australian-outback')
   })
 ]
 
@@ -976,13 +1169,16 @@ export function filterTerrainFeatures(features = terrainFeatures, filters = {}) 
 export function featuredTerrainFeatures(limit = 6) {
   const priority = [
     'himalayas',
-    'tibetan-plateau',
-    'sahara-desert',
-    'amazon-river',
+    'andes',
+    'san-andreas-fault',
+    'yellowstone-caldera',
+    'mid-atlantic-ridge',
     'east-african-rift',
     'mariana-trench',
-    'rocky-mountains',
-    'mid-atlantic-ridge'
+    'hawaiian-islands',
+    'sahara-desert',
+    'amazon-river',
+    'tibetan-plateau'
   ]
   return priority
     .map((id) => getTerrainFeature(id))

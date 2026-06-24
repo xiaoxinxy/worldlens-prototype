@@ -1,21 +1,63 @@
 <template>
-  <main class="content-view page-view">
-    <section class="content-hero glass-card gallery-hero">
-      <p class="eyebrow">探索索引</p>
-      <h1>{{ heroTitle }}</h1>
-      <p>{{ heroText }}</p>
-      <div class="wide-search archive-search">
+  <main class="content-view page-view atlas-index-view">
+    <section class="atlas-command-shell atlas-search-panel glass-card">
+      <div class="atlas-search-copy">
+        <span class="atlas-mini-label">探索索引</span>
+        <h1>{{ heroTitle }}</h1>
+        <p>{{ heroText }}</p>
+        <div class="atlas-signal-row">
+          <span>地球图层</span>
+          <span>自然系统</span>
+          <span>文明线索</span>
+          <span>海洋与季节</span>
+        </div>
+      </div>
+      <form class="atlas-command-search archive-search" @submit.prevent="syncSearch">
         <input
           v-model="keyword"
           type="search"
-          placeholder="搜索国家、大洲、大洋、文化关键词"
-          @keyup.enter="syncSearch"
+          placeholder="搜索国家、大洲、大洋、地形、气候或文化关键词"
         />
-        <button class="primary-btn" @click="syncSearch">搜索</button>
+        <button class="primary-btn" type="submit">搜索</button>
+      </form>
+
+      <div v-if="!isSearching && !section" class="atlas-orbit-map" aria-label="探索模块轨道">
+        <div class="atlas-orbit-core">
+          <span>WorldLens</span>
+          <strong>从地球进入</strong>
+        </div>
+        <RouterLink
+          v-for="entry in quickLinks"
+          :key="`orbit-${entry.id}`"
+          class="atlas-orbit-node"
+          :class="`node-${entry.id}`"
+          :to="entry.to"
+          :style="{ '--entry-accent': entry.accent }"
+        >
+          <span>{{ entry.short }}</span>
+        </RouterLink>
       </div>
     </section>
 
-    <section v-if="isSearching" class="country-index">
+    <section v-if="!isSearching && !section" class="atlas-entry-grid">
+      <RouterLink
+        v-for="entry in quickLinks"
+        :key="entry.id"
+        class="atlas-entry-card glass-card"
+        :to="entry.to"
+        :style="{ '--entry-accent': entry.accent }"
+      >
+        <span>{{ entry.kicker }}</span>
+        <strong>{{ entry.name }}</strong>
+        <p>{{ entry.intro }}</p>
+        <div class="atlas-entry-meta">
+          <small>{{ entry.meta }}</small>
+          <b>进入</b>
+        </div>
+      </RouterLink>
+    </section>
+
+    <section v-if="isSearching" class="country-index atlas-results">
       <div class="result-toolbar">
         <span>{{ filteredResults.length }} 个结果</span>
         <div class="filter-buttons">
@@ -45,7 +87,7 @@
       </div>
     </section>
 
-    <section v-else-if="!section" class="archive-category-grid">
+    <section v-else-if="!section" class="archive-category-grid atlas-browse-grid">
       <RouterLink
         v-for="entry in rootSections"
         :key="entry.id"
@@ -59,7 +101,7 @@
       </RouterLink>
     </section>
 
-    <section v-else-if="section && !activeGroup" class="archive-category-grid">
+    <section v-else-if="section && !activeGroup" class="archive-category-grid atlas-browse-grid">
       <RouterLink class="archive-back mini-btn" to="/gallery">返回分类</RouterLink>
       <article
         v-for="entry in sectionEntries"
@@ -83,7 +125,7 @@
       </article>
     </section>
 
-    <section v-else class="country-index">
+    <section v-else class="country-index atlas-results">
       <RouterLink class="archive-back mini-btn" :to="{ path: '/gallery', query: { section } }">返回上一级</RouterLink>
       <article class="continent-block">
         <h2>{{ activeGroup.name }}</h2>
@@ -143,6 +185,79 @@ const oceanRelations = {
   'southern-ocean': []
 }
 
+const quickLinks = [
+  {
+    id: 'terrain',
+    short: '地形',
+    kicker: '自然骨架',
+    name: '地形探索',
+    intro: '山脉、沙漠、河流、冰川、海沟等地貌案例。',
+    meta: '地貌案例 · 板块成因',
+    accent: '#f4d06f',
+    to: { path: '/', query: { layer: 'terrain' } }
+  },
+  {
+    id: 'climate',
+    short: '气候',
+    kicker: '大气系统',
+    name: '气候探索',
+    intro: '热带雨林、沙漠、季风、高山、极地等气候类型。',
+    meta: '纬度带 · 大气环流',
+    accent: '#9ae6ff',
+    to: { path: '/', query: { layer: 'climate' } }
+  },
+  {
+    id: 'ocean',
+    short: '海洋',
+    kicker: '蓝色动力',
+    name: '海洋探索',
+    intro: '洋流、海沟、海岭、海盆和珊瑚礁图层。',
+    meta: '洋流 · 海底结构',
+    accent: '#62e6d5',
+    to: { path: '/', query: { mode: 'ocean' } }
+  },
+  {
+    id: 'dynamics',
+    short: '动态',
+    kicker: '行星引擎',
+    name: '地球动态',
+    intro: '板块、地震和火山如何共同塑造地表。',
+    meta: '板块 · 地震 · 火山',
+    accent: '#ffb36c',
+    to: { path: '/', query: { mode: 'dynamics' } }
+  },
+  {
+    id: 'seasonal',
+    short: '季节',
+    kicker: '年度节律',
+    name: '季节系统',
+    intro: '直射点、雨带、季风和区域气候随月份变化。',
+    meta: '12 个月 · 季风雨带',
+    accent: '#b5f78d',
+    to: { path: '/', query: { mode: 'seasonal' } }
+  },
+  {
+    id: 'cosmos',
+    short: '宇宙',
+    kicker: '天文驱动',
+    name: '地球与宇宙',
+    intro: '昼夜、晨昏线、极昼极夜和潮汐方向的可视化。',
+    meta: '太阳 · 月相 · 潮汐',
+    accent: '#c7b8ff',
+    to: { path: '/', query: { mode: 'cosmos' } }
+  },
+  {
+    id: 'civilization',
+    short: '文明',
+    kicker: '人文线索',
+    name: '文明探索',
+    intro: '路线、人口、语言和区域文化如何沿地理展开。',
+    meta: '路线 · 人口 · 语言',
+    accent: '#ff9ecb',
+    to: { path: '/', query: { mode: 'civilization' } }
+  }
+]
+
 onMounted(async () => {
   places.value = await getPlaces()
 })
@@ -163,7 +278,7 @@ const rootSections = [
     id: 'continents',
     kicker: '大陆与国家',
     name: '国家与地区',
-    intro: '先按大洲进入，再浏览各国家与地区的地球探索档案。'
+    intro: '按大洲进入，再浏览各国家与地区的地球探索档案。'
   },
   {
     id: 'oceans',
@@ -218,11 +333,11 @@ const filteredResults = computed(() => {
 })
 
 const heroTitle = computed(() => {
-  if (isSearching.value) return '搜索文化档案'
+  if (isSearching.value) return '搜索结果'
   if (activeGroup.value) return activeGroup.value.name
   if (section.value === 'continents') return '按大洲浏览'
   if (section.value === 'oceans') return '按大洋浏览'
-  return '探索索引'
+  return '从这里进入世界线索'
 })
 
 const heroText = computed(() => {
@@ -230,7 +345,7 @@ const heroText = computed(() => {
   if (activeGroup.value) return activeGroup.value.intro
   if (section.value === 'continents') return '选择一个大洲，再进入国家、社会、自然与文化档案。'
   if (section.value === 'oceans') return '选择一个大洋，查看相关海域、海岸文化与海上路线。'
-  return '先从国家或海洋进入，也可以直接搜索自然、文化、路线与地理关键词。'
+  return '先选择一个探索方向，也可以直接搜索自然、文化、路线与地理关键词。'
 })
 
 function syncSearch() {

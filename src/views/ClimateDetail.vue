@@ -130,6 +130,13 @@
         </RouterLink>
       </div>
     </section>
+
+    <DetailAiAssistant
+      subject-type="climate"
+      :subject-id="climate.id"
+      :subject-name="climate.name"
+      :context="detailAiContext"
+    />
   </main>
 
   <main v-else class="not-found page-view">
@@ -148,6 +155,7 @@ import ClimateStory from '../components/climate/ClimateStory.vue'
 import { getClimateZoneById, getRelatedClimate } from '../api/climateApi'
 import { climateFactors } from '../data/climate'
 import { lazyBackground as vLazyBg } from '../directives/lazyBackground'
+import DetailAiAssistant from '../components/ai/DetailAiAssistant.vue'
 
 const ClimateAnimationSystem = defineAsyncComponent(() =>
   import('../components/climate/ClimateAnimationSystem.vue')
@@ -186,5 +194,28 @@ const explanationSections = computed(() => {
     { kicker: '聚落', title: '城市与聚落影响', content: climate.value.human_settlement },
     { kicker: '文明', title: '文明影响', content: climate.value.civilization_impact }
   ]
+})
+
+const detailAiContext = computed(() => {
+  if (!climate.value) return {}
+  return {
+    type: climate.value.type_label,
+    continent: climate.value.continent,
+    region: climate.value.region,
+    coordinates: [climate.value.latitude, climate.value.longitude],
+    summary: climate.value.summary,
+    formationReason: climate.value.formation_reason,
+    temperature: climate.value.temperature,
+    precipitation: climate.value.precipitation,
+    seasonality: climate.value.seasonality,
+    vegetation: climate.value.vegetation,
+    wildlife: climate.value.wildlife,
+    agriculture: climate.value.agriculture,
+    humanSettlement: climate.value.human_settlement,
+    civilizationImpact: climate.value.civilization_impact,
+    relatedCountries: climate.value.related_countries,
+    relatedTerrain: climate.value.related_terrain,
+    relatedOceans: climate.value.related_oceans
+  }
 })
 </script>

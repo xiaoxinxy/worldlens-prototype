@@ -53,7 +53,7 @@ await auditCollection('climate covers', climateZones.map((item) => ({ id: item.i
 await auditCollection('plate covers', majorPlates.map((item) => ({ id: item.id, image: item.cover_image })))
 await auditCollection('volcano covers', volcanoFeatures.map((item) => ({ id: item.id, image: item.cover_image })))
 await auditCollection('route node images', culturalRoutes.flatMap((route) =>
-  route.nodes.map((node) => ({ id: `${route.id}/${node.id}`, image: node.image }))
+  route.nodes.map((node) => ({ id: `${route.routeId}/${node.id}`, image: node.image }))
 ))
 
 async function auditDetailSections() {

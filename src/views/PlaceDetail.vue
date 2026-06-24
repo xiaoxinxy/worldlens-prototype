@@ -17,7 +17,7 @@
           <span>{{ coordinateText }}</span>
         </div>
         <div class="detail-actions">
-          <button class="primary-btn favorite-action" @click="favoriteStore.toggle(place.id)">
+          <button class="primary-btn favorite-action" @click="favoriteStore.toggle(place.id, favoriteMeta)">
             {{ favoriteStore.has(place.id) ? '已收藏' : '收藏地点' }}
           </button>
           <RouterLink class="ghost-btn" :to="{ path: '/', query: { focus: place.slug } }">
@@ -207,6 +207,13 @@
         </RouterLink>
       </div>
     </section>
+
+    <DetailAiAssistant
+      subject-type="place"
+      :subject-id="place.id"
+      :subject-name="place.name"
+      :context="detailAiContext"
+    />
   </main>
 
   <main v-else class="not-found page-view">
@@ -229,6 +236,7 @@ import { useFavoriteStore } from '../stores/favorite'
 import { useHistoryStore } from '../stores/history'
 import CulturalSection from '../components/CulturalSection.vue'
 import GalleryGrid from '../components/GalleryGrid.vue'
+import DetailAiAssistant from '../components/ai/DetailAiAssistant.vue'
 import { detailProfileForPlace } from '../data/detailProfiles'
 import { lazyBackground as vLazyBg } from '../directives/lazyBackground'
 
@@ -299,6 +307,27 @@ const coordinateText = computed(() => {
 const wikiHref = computed(() => {
   const name = place.value?.nameEn || place.value?.name || ''
   return place.value?.wikiUrl || `https://zh.wikipedia.org/wiki/${encodeURIComponent(name.replaceAll(' ', '_'))}`
+})
+
+const favoriteMeta = computed(() => ({
+  itemType: 'place',
+  title: place.value?.name || '',
+  coverImage: place.value?.coverImage || ''
+}))
+
+const detailAiContext = computed(() => {
+  if (!place.value) return {}
+  return {
+    type: place.value.type,
+    continent: place.value.continent,
+    coordinates: [place.value.lat, place.value.lng],
+    introduction: place.value.intro,
+    keywords: place.value.keywords,
+    statistics: place.value.stats,
+    sections: place.value.sections,
+    timeline: place.value.timeline,
+    facts: place.value.facts
+  }
 })
 
 const detailProfile = computed(() => (place.value ? detailProfileForPlace(place.value) : null))

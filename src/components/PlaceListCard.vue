@@ -17,7 +17,7 @@
       </div>
       <div class="card-actions-row">
         <RouterLink class="text-link" :to="`/place/${place.slug}`">查看详情</RouterLink>
-        <button class="mini-btn favorite-action" @click="favoriteStore.toggle(place.id)">
+        <button class="mini-btn favorite-action" @click="favoriteStore.toggle(place.id, favoriteMeta)">
           {{ favoriteStore.has(place.id) ? '已收藏' : '收藏' }}
         </button>
       </div>
@@ -29,9 +29,14 @@
 import { useFavoriteStore } from '../stores/favorite'
 import { lazyBackground as vLazyBg } from '../directives/lazyBackground'
 
-defineProps({
+const props = defineProps({
   place: { type: Object, required: true }
 })
 
 const favoriteStore = useFavoriteStore()
+const favoriteMeta = {
+  itemType: 'place',
+  title: props.place.name,
+  coverImage: props.place.coverImage || ''
+}
 </script>

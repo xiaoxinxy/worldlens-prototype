@@ -1,5 +1,5 @@
 <template>
-  <section class="route-panel glass-card">
+  <section class="route-panel" :class="{ 'glass-card': !embedded, embedded }">
     <div class="panel-label">
       <span>文化路线</span>
       <small>文明传播路径</small>
@@ -68,7 +68,8 @@ const props = defineProps({
   routes: { type: Array, default: () => [] },
   selectedRoute: { type: Object, default: null },
   activeNodeIndex: { type: Number, default: -1 },
-  isPlaying: { type: Boolean, default: false }
+  isPlaying: { type: Boolean, default: false },
+  embedded: { type: Boolean, default: false }
 })
 
 defineEmits(['select-route', 'start', 'pause', 'resume', 'previous', 'next', 'select-node'])

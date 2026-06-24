@@ -1,0 +1,39 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./backend/data/worldlens;MODE=MySQL;AUTO_SERVER=TRUE
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      continue-on-error: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+worldlens:
+  auth:
+    token-days: 7
+  upload:
+    root: ./uploads
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/worldlens?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root

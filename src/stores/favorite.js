@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
-import { clearFavoriteIds, getFavoriteIds, removeFavoriteId, saveFavoriteId } from '../api/favoriteApi'
+import { clearFavoriteIds, getFavoriteItems, removeFavoriteId, saveFavoriteId } from '../api/favoriteApi'
 
 export const useFavoriteStore = defineStore('favorite', {
   state: () => ({
-    ids: []
+    ids: [],
+    items: []
   }),
   getters: {
     count: (state) => state.ids.length,
@@ -11,20 +12,29 @@ export const useFavoriteStore = defineStore('favorite', {
   },
   actions: {
     async hydrate() {
-      this.ids = await getFavoriteIds()
+      this.items = await getFavoriteItems()
+      this.ids = this.items.map((item) => item.itemId).filter(Boolean)
     },
-    async toggle(id) {
+    async toggle(id, meta = {}) {
       if (this.ids.includes(id)) {
         this.ids = await removeFavoriteId(id)
+        this.items = this.items.filter((item) => item.itemId !== id)
       } else {
-        this.ids = await saveFavoriteId(id)
+        this.ids = await saveFavoriteId(id, meta)
+        await this.hydrate()
       }
+    },
+    async save(id, meta = {}) {
+      this.ids = await saveFavoriteId(id, meta)
+      await this.hydrate()
     },
     async remove(id) {
       this.ids = await removeFavoriteId(id)
+      this.items = this.items.filter((item) => item.itemId !== id)
     },
     async clear() {
       this.ids = await clearFavoriteIds()
+      this.items = []
     }
   }
 })

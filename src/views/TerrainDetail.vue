@@ -110,6 +110,13 @@
         </RouterLink>
       </div>
     </section>
+
+    <DetailAiAssistant
+      subject-type="terrain"
+      :subject-id="terrain.id"
+      :subject-name="terrain.name"
+      :context="detailAiContext"
+    />
   </main>
 
   <main v-else class="not-found page-view">
@@ -126,6 +133,7 @@ import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { getRelatedTerrain, getTerrainFeatureById } from '../api/terrainApi'
 import { lazyBackground as vLazyBg } from '../directives/lazyBackground'
+import DetailAiAssistant from '../components/ai/DetailAiAssistant.vue'
 
 const TerrainFormationAnimation = defineAsyncComponent(() =>
   import('../components/terrain/TerrainFormationAnimation.vue')
@@ -157,5 +165,24 @@ const explanationSections = computed(() => {
     { kicker: '文明', title: '如何影响文明与国家发展', content: terrain.value.civilization_impact },
     { kicker: '人类活动', title: '如何影响人类活动', content: terrain.value.human_activity }
   ]
+})
+
+const detailAiContext = computed(() => {
+  if (!terrain.value) return {}
+  return {
+    type: terrain.value.type_label,
+    continent: terrain.value.continent,
+    region: terrain.value.region,
+    coordinates: [terrain.value.latitude, terrain.value.longitude],
+    summary: terrain.value.summary,
+    formationReason: terrain.value.formation_reason,
+    climateImpact: terrain.value.climate_impact,
+    ecology: terrain.value.ecology,
+    civilizationImpact: terrain.value.civilization_impact,
+    humanActivity: terrain.value.human_activity,
+    tectonics: terrain.value.tectonics,
+    countries: terrain.value.country_codes,
+    tags: terrain.value.tags
+  }
 })
 </script>
