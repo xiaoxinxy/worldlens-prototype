@@ -1,4 +1,4 @@
-# WorldLens
+# 地球视界 · WorldLens
 
 WorldLens 是一个基于 Vue 3、Three.js 和 Spring Boot 的 3D 地球探索平台。项目包含国家、地形、气候、海洋、洋流、板块、季节与文明路线等可视化内容，并提供账户、收藏、浏览历史、后台内容管理和两套相互独立的 AI 能力。
 
